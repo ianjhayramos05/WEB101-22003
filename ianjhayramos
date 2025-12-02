@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Dashboard</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body {display:flex;background:#f4f6fa;height:100vh;}
+
+    .sidebar {width:240px;background:#1b1f3b;color:white;padding:20px 10px;display:flex;flex-direction:column;gap:20px;}
+    .sidebar h2 {text-align:center;margin-bottom:10px;}
+    .menu-item {padding:12px 15px;border-radius:8px;cursor:pointer;transition:0.3s;}
+    .menu-item:hover {background:#313866;}
+    .submenu {margin-left:15px;display:flex;flex-direction:column;gap:8px;}
+    .submenu div {color:#cdd1ff;font-size:14px;padding:6px;border-radius:6px;cursor:pointer;transition:0.3s;}
+    .submenu div:hover {background:#454b7b;}
+
+    .content {flex:1;padding:30px;}
+    .card {background:white;padding:25px;border-radius:15px;width:90%;box-shadow:0 4px 20px rgba(0,0,0,0.1);display:flex;gap:30px;align-items:center;}
+    .profile-img {width:120px;height:120px;border-radius:50%;background:#d9d9d9;}
+    .info-box {background:#f1f3ff;padding:12px 18px;border-radius:10px;margin-bottom:10px;}
+    .info-title {font-size:14px;color:#555;}
+    .info-value {font-size:18px;font-weight:600;}
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>My Panel</h2>
+    <div class="menu-item">Profiles</div>
+    <div class="submenu">
+      <div onclick="loadProfile(1)">Profile 1</div>
+      <div onclick="loadProfile(2)">Profile 2</div>
+      <div onclick="loadProfile(3)">Profile 3</div>
+      <div onclick="loadProfile(4)">Profile 4</div>
+      <div onclick="loadProfile(5)">Profile 5</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h1 id="profileTitle">Profile</h1>
+    <div class="card">
+      <div class="profile-img"></div>
+      <div>
+        <h2 id="name">Select a Profile</h2>
+
+        <div class="info-box">
+          <div class="info-title">Age</div>
+          <div class="info-value" id="age">-</div>
+        </div>
+        <div class="info-box">
+          <div class="info-title">Address</div>
+          <div class="info-value" id="address">-</div>
+        </div>
+        <div class="info-box">
+          <div class="info-title">Phone</div>
+          <div class="info-value" id="phone">-</div>
+        </div>
+        <div class="info-box">
+          <div class="info-title">Email</div>
+          <div class="info-value" id="email">-</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const profiles = {
+      1:{name:"Kier Aure ",age:31,address:"Bahay ni ian",phone:"(555) 123-9876",email:"kier@email.com"},
+      2:{name:"Ian Ramos",age:35,address:"Manila City",phone:"(555) 222-3344",email:"ian@email.com"},
+      3:{name:"John Cruz",age:20,address:"Davao City",phone:"(555) 333-2211",email:"john@email.com"},
+      4:{name:"Ella Torres",age:23,address:"Quezon City",phone:"(555) 444-7788",email:"ella@email.com"},
+      5:{name:"Mark Villan",age:21,address:"Baguio City",phone:"(555) 555-1199",email:"mark@email.com"}
+    };
+
+    function loadProfile(id){
+      const p = profiles[id];
+      document.getElementById("profileTitle").textContent = Profile ${id};
+      document.getElementById("name").textContent = p.name;
+      document.getElementById("age").textContent = p.age;
+      document.getElementById("address").textContent = p.address;
+      document.getElementById("phone").textContent = p.phone;
+      document.getElementById("email").textContent = p.email;
+    }
+  </script>
+</body>
+</html>
